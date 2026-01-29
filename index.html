@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Hanuman:wght@400;700&family=Dancing+Script:wght@700&family=Moul&family=Kantumruy+Pro:wght@300;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         :root {
+            --primary-pink: #ff4d6d;
+            --secondary-pink: #ff85a1;
+            --bg-soft: #fff0f3;
+            --glass: rgba(255, 255, 255, 0.75);
+        }
+        
+        body {
+            background-color: var(--bg-soft);
+            font-family: 'Hanuman', serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .khmer-art {
+            font-family: 'Freehand', cursive;
+        }
+        
+        .khmer-moul {
+            font-family: 'Moul', serif;
+        }
+        
+        .khmer-body {
+            font-family: 'Kantumruy Pro', sans-serif;
+        }
+        
+        .heart-particle {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+        /* Confetti Animation */
+        
+        @keyframes fallConfetti {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(120vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            user-select: none;
+        }
+        
+        .profile-wrapper {
+            position: relative;
+            padding: 15px;
+            cursor: pointer;
+        }
+        
+        .profile-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px dashed var(--primary-pink);
+            border-radius: 50%;
+            animation: spin 15s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px 0 rgba(255, 77, 109, 0.15);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #scratch-container {
+            position: relative;
+            width: 280px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        #scratch-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            cursor: crosshair;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+        
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+        
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .heart-click {
+            position: absolute;
+            pointer-events: none;
+            animation: popOut 0.8s ease-out forwards;
+        }
+        
+        @keyframes popOut {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2) translateY(-50px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center py-10 px-4 space-y-16 pb-32 khmer-body">
+
+    <div id="hearts-container"></div>
+
+    <!-- Header Section -->
+    <header class="relative z-10 w-full max-w-2xl text-center space-y-6">
+        <div class="space-y-4">
+            <h1 class="cursive text-5xl md:text-8xl text-pink-600 drop-shadow-md animate-pulse">Happy Valentine's Day Net Net Oun sml B</h1>
+            <p class="khmer-moul text-2xl md:text-3xl text-pink-500 tracking-wide">រីករាយថ្ងៃនៃក្តីស្រលាញ់</p>
+            <p class="khmer-art text-2xl text-pink-400">អរគុណដែលចូលមកបំពេញបេះដូងបង</p>
+        </div>
+
+        <div class="flex justify-center pt-6">
+            <div class="profile-wrapper" onclick="popHearts(event)">
+                <img src="Photo/photo_2026-01-29_15-40-27.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-8 border-white shadow-2xl transition duration-700 hover:scale-110">
+                <p class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-400 text-white px-6 py-1 rounded-full text-xs animate-bounce flex items-center gap-1">Jute Ot Ng BSD 💗</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Timer Section -->
+    <section class="reveal z-10 w-full max-w-lg">
+        <div class="glass-card p-8 rounded-[2rem] text-center">
+            <h2 class="text-sm font-bold text-gray-500 uppercase tracking-[0.3em] mb-6">ថ្ងៃដែរអូនព្រមទទួលយកបងគិតមកដល់ឥលូវ😝</h2>
+            <div class="grid grid-cols-4 gap-3">
+                <div class="flex flex-col"><span id="days" class="text-3xl md:text-4xl font-bold text-pink-600">0</span><span class="text-xs text-gray-400 mt-1">ថ្ងៃ</span></div>
+                <div class="flex flex-col"><span id="hours" class="text-3xl md:text-4xl font-bold text-pink-600">0</span><span class="text-xs text-gray-400 mt-1">ម៉ោង</span></div>
+                <div class="flex flex-col"><span id="minutes" class="text-3xl md:text-4xl font-bold text-pink-600">0</span><span class="text-xs text-gray-400 mt-1">នាទី</span></div>
+                <div class="flex flex-col"><span id="seconds" class="text-3xl md:text-4xl font-bold text-pink-600">0</span><span class="text-xs text-gray-400 mt-1">វិនាទី</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section class="reveal z-10 w-full max-w-2xl space-y-6">
+        <h3 class="khmer-art text-3xl text-center text-pink-600">សំបុត្រនៃក្តីស្រលាញ់ចេញពីបេះដូងរបស់បង</h3>
+        <div class="glass-card p-8 rounded-2xl shadow-lg text-lg text-gray-700 leading-relaxed">
+            <p>សួស្តីអូនសម្លាញ់របស់បង ❤️<br> អរគុណសម្រាប់ពេលវេលាដ៏អស្ចារ្យទាំងអស់ដែលយើងបានចែករំលែកគ្នា។ បងស្រលាញ់អូនជានិច្ច និងសង្ឃឹមថាយើងនឹងបន្តបង្កើតអនុស្សាវរីយ៍ថ្មីៗជាមួយគ្នា។ អូនគឺជាអ្នកសំខាន់បំផុតក្នុងជីវិតបង។<br> បងតែងតែស្រលាញ់អូនជានិច្ច!! ហើយក៏ស្រលាញ់ខ្លាំងណាស់ដែរអូនមានដឹងទេ🥺❤️
+                💖
+            </p>
+        </div>
+    </section>
+
+    <!-- Quote Generator -->
+    <section class="reveal z-10 w-full max-w-lg text-center">
+        <div class="glass-card p-8 rounded-3xl space-y-4">
+            <p id="quote-text" class="khmer-art text-2xl text-pink-600 italic">អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ</p>
+            <button onclick="newQuote()" class="text-pink-400 text-sm underline hover:text-pink-600 transition">ចុចមើលសារថ្មី ✨</button>
+        </div>
+    </section>
+
+    <!-- Scratch Card Section -->
+    <section class="reveal z-10 w-full max-w-lg text-center space-y-4">
+        <h3 class="khmer-art text-2xl text-pink-600">កោសទីនេះ ដើម្បីមើលសារចេញពីបេះដូងស្មោះបង 🎁</h3>
+        <div id="scratch-container" class="shadow-xl">
+            <div class="scratch-content text-center p-4 flex h-full items-center justify-center">
+                <div>
+                    <p class="text-pink-600 font-bold text-xl">បងនឹងស្រលាញ់អូនឱ្យកាន់តែខ្លាំងរាល់ថ្ងៃ!</p>
+                    <p class="text-sm text-gray-500 mt-1">I'll never let you go ❤️</p>
+                </div>
+            </div>
+            <canvas id="scratch-canvas" width="280" height="150"></canvas>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="reveal z-10 w-full max-w-lg">
+        <div class="glass-card p-10 rounded-[2.5rem] text-center space-y-8 relative overflow-hidden">
+            <h3 class="text-2xl font-bold text-gray-800">តើអូនស្រលាញ់បងប៉ុណ្ណាដែរ? ❤️</h3>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6" id="quiz-area">
+                <button onclick="answerYes()" class="w-full sm:w-auto bg-pink-600 hover:bg-pink-700 text-white font-bold py-4 px-12 rounded-full shadow-lg transform transition hover:scale-110">
+                    ស្រលាញ់ខ្លាំងបំផុត!
+                </button>
+                <button id="noBtn" class="no-button w-full sm:w-auto bg-white text-gray-400 border border-gray-200 font-bold py-4 px-12 rounded-full shadow-sm">
+                    តិចតួច
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="reveal z-10 w-full max-w-5xl space-y-8 pt-10">
+        <h3 class="khmer-moul text-2xl text-center text-pink-600">អនុស្សាវរីយ៍ដែលមិនអាចបំភ្លេចបាន 📸</h3>
+        <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-2deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_2026-01-29_15-40-27.jpg" class="w-full h-auto object-cover" alt="Memory 0">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពថ្មីបំផុត</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-2deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_1_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 1">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី១</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(3deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_2_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 2">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី២</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-1deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_3_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 3">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៣</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(2deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_4_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 4">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៤</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-3deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_5_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 5">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៥</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(1.5deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_6_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 6">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៦</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-1.5deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_7_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 7">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៧</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(2.5deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_8_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 8">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៨</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(-2.5deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_9_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 9">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៩</p>
+            </div>
+            <div class="polaroid break-inside-avoid" style="transform: rotate(1deg);" onclick="openLightbox(this)">
+                <img src="Photo/photo_10_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 10">
+                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី១០</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Control -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button onclick="toggleMusic()" id="musicBtn" class="bg-pink-600 text-white p-4 rounded-full shadow-2xl hover:bg-pink-700 transition transform hover:scale-110">
+            <span id="musicIcon">🎵</span>
+        </button>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl">
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 hidden z-[300] items-center justify-center p-4 backdrop-blur-md" onclick="closeModal('successModal')">
+        <div class="bg-white p-10 rounded-[2rem] text-center m-4 max-w-sm space-y-6 shadow-2xl" onclick="event.stopPropagation()">
+            <div class="text-7xl animate-bounce">💖</div>
+            <h3 class="text-2xl font-bold text-pink-600 italic">បងក៏ស្រលាញ់អូនដែរ!</h3>
+            <p class="text-gray-600">អរគុណដែលផ្តល់តម្លៃឱ្យបង និងស្រលាញ់បងបែបនេះ។ បងនឹងធ្វើជាមនុស្សដែលល្អបំផុតសម្រាប់អូន។</p>
+            <button onclick="closeModal('successModal')" class="bg-pink-500 text-white px-8 py-2 rounded-full">Love You Too!</button>
+        </div>
+    </div>
+
+    <audio id="loveSong" loop>
+        <source src="My Love.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Fallback Music Start Button -->
+    <div id="musicStartContainer" class="fixed bottom-24 right-8 z-50 hidden">
+        <button onclick="startMusic()" class="bg-pink-500 text-white p-4 rounded-full shadow-2xl hover:bg-pink-700 transition transform hover:scale-110">
+            ចាប់ផ្តើមសំឡេង 🎶
+        </button>
+    </div>
+
+    <script>
+        // Timer Logic
+        const startDate = new Date("2024-12-04T00:00:00");
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            document.getElementById('days').innerText = Math.floor(diff / 86400000);
+            document.getElementById('hours').innerText = Math.floor((diff / 3600000) % 24);
+            document.getElementById('minutes').innerText = Math.floor((diff / 60000) % 60);
+            document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Falling Hearts
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            heart.innerHTML = ['❤️', '💖', '🌸', '💕'][Math.floor(Math.random() * 4)];
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 450);
+
+        // Confetti Function
+        function launchConfetti() {
+            const emojis = ['❤️', '💖', '💕', '🎉', '🌹', '💗', '😘', '💞'];
+            for (let i = 0; i < 90; i++) {
+                setTimeout(() => {
+                    const conf = document.createElement('div');
+                    conf.className = 'confetti';
+                    conf.style.left = Math.random() * 100 + 'vw';
+                    conf.style.top = '-50px';
+                    conf.style.fontSize = (Math.random() * 22 + 18) + 'px';
+                    conf.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+                    conf.style.animationDelay = Math.random() * 0.3 + 's';
+                    conf.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    conf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    document.body.appendChild(conf);
+                    setTimeout(() => conf.remove(), 5000);
+                }, i * 25);
+            }
+        }
+
+        // Scratch Card
+        const canvas = document.getElementById('scratch-canvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+
+        function initScratchCard() {
+            ctx.fillStyle = '#e2e8f0';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = 'bold 18px Hanuman';
+            ctx.textAlign = 'center';
+            ctx.fillText('កោសទីនេះ មើលពាក្យសន្យា ✨', canvas.width / 2, canvas.height / 2 + 10);
+        }
+
+        function scratch(e) {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || (e.touches ? e.touches[0].clientX : 0)) - rect.left;
+            const y = (e.clientY || (e.touches ? e.touches[0].clientY : 0)) - rect.top;
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('touchstart', () => isDrawing = true);
+        window.addEventListener('mouseup', () => isDrawing = false);
+        window.addEventListener('touchend', () => isDrawing = false);
+        canvas.addEventListener('mousemove', scratch);
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            scratch(e);
+        }, {
+            passive: false
+        });
+        initScratchCard();
+
+        // Quote Generator
+        const quotes = [
+            "\"អូនគឺជាពិភពលោកទាំងមូលរបស់បង\"",
+            "\"រាល់វិនាទីដែលនៅក្បែរអូន គឺជាសុភមង្គល\"",
+            "\"បងនឹងនៅក្បែរអូន ទោះក្នុងកាលៈទេសៈណាក៏ដោយ\"",
+            "\"អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ\"",
+            "\"អូនគឺជាពន្លឺនៃជីវិតរបស់បង\""
+        ];
+
+        function newQuote() {
+            const text = document.getElementById('quote-text');
+            text.style.opacity = 0;
+            setTimeout(() => {
+                text.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+                text.style.opacity = 1;
+            }, 300);
+        }
+
+        // Gallery Lightbox
+        function openLightbox(el) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = el.querySelector('img').src;
+            modal.style.display = 'flex';
+        }
+
+        // Pop Hearts
+        function popHearts(e) {
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'heart-click';
+                heart.style.left = (e.clientX + (Math.random() - 0.5) * 100) + 'px';
+                heart.style.top = (e.clientY + (Math.random() - 0.5) * 100) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 800);
+            }
+        }
+
+        // Moving No Button
+        const noBtn = document.getElementById('noBtn');
+        const moveButton = () => {
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = (Math.random() * (window.innerWidth - 100)) + 'px';
+            noBtn.style.top = (Math.random() * (window.innerHeight - 50)) + 'px';
+        };
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Reveal on scroll
+        function reveal() {
+            document.querySelectorAll(".reveal").forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add("active");
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Answer Yes with Confetti
+        function answerYes() {
+            launchConfetti();
+            document.getElementById('successModal').style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // Music Toggle
+        const audio = document.getElementById('loveSong');
+
+        // Try to auto-play music on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            audio.volume = 0.5;
+            audio.play().catch(() => {
+                // If auto-play fails, show start button
+                document.getElementById('musicStartContainer').style.display = 'block';
+            });
+        });
+
+        function startMusic() {
+            audio.play();
+            document.getElementById('musicStartContainer').style.display = 'none';
+            document.getElementById('musicIcon').innerText = "⏸️";
+        }
+
+        function toggleMusic() {
+            const icon = document.getElementById('musicIcon');
+            if (audio.paused) {
+                audio.play();
+                icon.innerText = "⏸️";
+            } else {
+                audio.pause();
+                icon.innerText = "🎵";
+            }
+        }
+    </script>
+</body>
+
+</html>
