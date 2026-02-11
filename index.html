@@ -190,9 +190,9 @@
         </div>
 
         <div class="flex justify-center pt-6">
-            <div class="profile-wrapper" onclick="popHearts(event)">
-                <img src="Photo/photo_2026-01-29_15-40-27.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-8 border-white shadow-2xl transition duration-700 hover:scale-110">
-                <p class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-400 text-white px-6 py-1 rounded-full text-xs animate-bounce flex items-center gap-1">Jute Ot Ng BSD 💗</p>
+            <div class="profile-photo-card relative flex flex-col items-center p-4 bg-white/80 rounded-3xl shadow-2xl border-4 border-pink-200 max-w-xs" onclick="popHearts(event)">
+                <img src="Photo2/photo_23_2026-02-11_13-18-57.jpg" alt="Couple" class="profile-photo-large" style="max-width: 320px; width: 100%; height: auto; object-fit: contain; border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,77,109,0.15); border: 3px solid #ffb6d5; background: #fff;">
+                <p class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-500 text-white px-4 py-1 rounded-full text-xs animate-bounce shadow">ចុចលើរូប ❤️</p>
             </div>
         </div>
     </header>
@@ -224,13 +224,13 @@
     <section class="reveal z-10 w-full max-w-lg text-center">
         <div class="glass-card p-8 rounded-3xl space-y-4">
             <p id="quote-text" class="khmer-art text-2xl text-pink-600 italic">អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ</p>
-            <button onclick="newQuote()" class="text-pink-400 text-sm underline hover:text-pink-600 transition">ចុចមើលសារថ្មី ✨</button>
+            <button onclick="newQuote()" class="text-pink-400 text-sm underline hover:text-pink-600 transition">អូនចុចម្តងទៀតមើល ✨</button>
         </div>
     </section>
 
     <!-- Scratch Card Section -->
     <section class="reveal z-10 w-full max-w-lg text-center space-y-4">
-        <h3 class="khmer-art text-2xl text-pink-600">កោសទីនេះ ដើម្បីមើលសារចេញពីបេះដូងស្មោះបង 🎁</h3>
+        <h3 class="khmer-art text-2xl text-pink-600">អូនកោសទីនេះ ដើម្បីមើលសារចេញពីបេះដូងស្មោះបង 🎁</h3>
         <div id="scratch-container" class="shadow-xl">
             <div class="scratch-content text-center p-4 flex h-full items-center justify-center">
                 <div>
@@ -260,52 +260,7 @@
     <!-- Photo Gallery Section -->
     <section class="reveal z-10 w-full max-w-5xl space-y-8 pt-10">
         <h3 class="khmer-moul text-2xl text-center text-pink-600">អនុស្សាវរីយ៍ដែលមិនអាចបំភ្លេចបាន 📸</h3>
-        <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-2deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_2026-01-29_15-40-27.jpg" class="w-full h-auto object-cover" alt="Memory 0">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពថ្មីបំផុត</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-2deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_1_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 1">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី១</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(3deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_2_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 2">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី២</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-1deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_3_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 3">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៣</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(2deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_4_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 4">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៤</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-3deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_5_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 5">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៥</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(1.5deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_6_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 6">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៦</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-1.5deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_7_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 7">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៧</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(2.5deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_8_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 8">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៨</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(-2.5deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_9_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 9">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី៩</p>
-            </div>
-            <div class="polaroid break-inside-avoid" style="transform: rotate(1deg);" onclick="openLightbox(this)">
-                <img src="Photo/photo_10_2026-01-29_15-22-04.jpg" class="w-full h-auto object-cover" alt="Memory 10">
-                <p class="khmer-art text-center text-pink-500 mt-2">រូបភាពទី១០</p>
-            </div>
-        </div>
+        <div id="photo2-gallery" class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4"></div>
     </section>
 
     <!-- Audio Control -->
@@ -331,7 +286,7 @@
     </div>
 
     <audio id="loveSong" loop>
-        <source src="My Love.mp3" type="audio/mpeg">
+        <source src="ifoundyou.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Fallback Music Start Button -->
@@ -342,6 +297,62 @@
     </div>
 
     <script>
+        // Photo2 Gallery Images
+        const photo2Images = [
+            "photo_1_2026-02-11_13-18-57.jpg",
+            "photo_2_2026-02-11_13-18-57.jpg",
+            "photo_3_2026-02-11_13-18-57.jpg",
+            "photo_4_2026-02-11_13-18-57.jpg",
+            "photo_5_2026-02-11_13-18-57.jpg",
+            "photo_6_2026-02-11_13-18-57.jpg",
+            "photo_7_2026-02-11_13-18-57.jpg",
+            "photo_8_2026-02-11_13-18-57.jpg",
+            "photo_9_2026-02-11_13-18-57.jpg",
+            "photo_10_2026-02-11_13-18-57.jpg",
+            "photo_11_2026-02-11_13-18-57.jpg",
+            "photo_12_2026-02-11_13-18-57.jpg",
+            "photo_13_2026-02-11_13-18-57.jpg",
+            "photo_14_2026-02-11_13-18-57.jpg",
+            "photo_15_2026-02-11_13-18-57.jpg",
+            "photo_16_2026-02-11_13-18-57.jpg",
+            "photo_17_2026-02-11_13-18-57.jpg",
+            "photo_18_2026-02-11_13-18-57.jpg",
+            "photo_19_2026-02-11_13-18-57.jpg",
+            "photo_20_2026-02-11_13-18-57.jpg",
+            "photo_21_2026-02-11_13-18-57.jpg",
+            "photo_22_2026-02-11_13-18-57.jpg",
+            "photo_23_2026-02-11_13-18-57.jpg",
+            "photo_24_2026-02-11_13-18-57.jpg",
+            "photo_25_2026-02-11_13-18-57.jpg",
+            "photo_26_2026-02-11_13-18-57.jpg",
+            "photo_27_2026-02-11_13-18-57.jpg",
+            "photo_28_2026-02-11_13-18-57.jpg",
+            "photo_29_2026-02-11_13-18-57.jpg",
+            "photo_30_2026-02-11_13-18-57.jpg",
+            "photo_31_2026-02-11_13-18-57.jpg",
+            "photo_32_2026-02-11_13-18-57.jpg",
+            "photo_33_2026-02-11_13-18-57.jpg",
+            "photo_34_2026-02-11_13-18-57.jpg",
+            "photo_35_2026-02-11_13-18-57.jpg",
+            "photo_36_2026-02-11_13-18-57.jpg",
+            "photo_37_2026-02-11_13-18-57.jpg",
+            "photo_38_2026-02-11_13-18-57.jpg",
+            "photo_39_2026-02-11_13-18-57.jpg",
+            "photo_40_2026-02-11_13-18-57.jpg",
+            "photo_41_2026-02-11_13-18-57.jpg",
+            "photo_42_2026-02-11_13-18-57.jpg"
+        ];
+
+        function renderPhoto2Gallery() {
+            const gallery = document.getElementById('photo2-gallery');
+            let rotateVals = [-2, 3, -1, 2, -3, 1.5];
+            gallery.innerHTML = photo2Images.map((img, i) => `
+                <div class="polaroid break-inside-avoid" style="transform: rotate(${rotateVals[i%rotateVals.length]}deg);" onclick="openLightbox(this)">
+                    <img src="Photo2/${img}" class="w-full h-auto object-cover" alt="Love ${i+1}">
+                </div>
+            `).join('');
+        }
+        renderPhoto2Gallery();
         // Timer Logic
         const startDate = new Date("2024-12-04T00:00:00");
 
@@ -473,6 +484,12 @@
             noBtn.style.position = 'fixed';
             noBtn.style.left = (Math.random() * (window.innerWidth - 100)) + 'px';
             noBtn.style.top = (Math.random() * (window.innerHeight - 50)) + 'px';
+            // Shrink the button each time it's moved
+            let currentScale = parseFloat(noBtn.getAttribute('data-scale')) || 1;
+            let newScale = currentScale * 0.85;
+            if (newScale < 0.3) newScale = 0.3; // Minimum size
+            noBtn.style.transform = `scale(${newScale})`;
+            noBtn.setAttribute('data-scale', newScale);
         };
         noBtn.addEventListener('mouseover', moveButton);
         noBtn.addEventListener('touchstart', (e) => {
@@ -529,5 +546,26 @@
         }
     </script>
 </body>
+
+<footer class="w-full text-center py-8 mt-16 bg-transparent">
+    <div class="relative flex flex-col items-center justify-center">
+        <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-2">
+            <span class="text-3xl animate-bounce">💖</span>
+            <span class="text-2xl animate-pulse">🌸</span>
+            <span class="text-3xl animate-bounce">💗</span>
+        </div>
+        <div class="rounded-3xl px-8 py-6 shadow-xl bg-white/70 border border-pink-200 max-w-2xl mx-auto">
+            <p class="khmer-art text-2xl md:text-3xl text-pink-600 leading-relaxed">
+                នេះគ្រាន់តែជារូបភាពមួយផ្នែករបស់យើងទេ<br> ណាអូនយើងនៅមានច្រើនទៀតហដឹងអត់​
+                <span class="font-bold cursive text-rose-500 text-3xl ml-2">Kapipit</span>
+            </p>
+        </div>
+        <div class="mt-4 flex gap-3">
+            <span class="text-2xl animate-bounce">❤️</span>
+            <span class="text-2xl animate-bounce">💕</span>
+            <span class="text-2xl animate-bounce">💞</span>
+        </div>
+    </div>
+</footer>
 
 </html>
