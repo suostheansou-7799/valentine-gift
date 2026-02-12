@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day My Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Hanuman:wght@400;700&family=Dancing+Script:wght@700&family=Moul&family=Kantumruy+Pro:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Hanuman:wght@400;700&family=Battambang:wght@400;700&family=Nokora:wght@400;700&family=Dancing+Script:wght@700&family=Moul&family=Kantumruy+Pro:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
          :root {
@@ -17,7 +17,7 @@
         
         body {
             background-color: var(--bg-soft);
-            font-family: 'Hanuman', serif;
+            font-family: 'Hanuman', 'Battambang', 'Nokora', 'Kantumruy Pro', serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -30,12 +30,17 @@
             font-family: 'Freehand', cursive;
         }
         
+        .khmer-freehand {
+            font-family: 'Freehand', sans-serif;
+            font-style: normal;
+        }
+        
         .khmer-moul {
             font-family: 'Moul', serif;
         }
         
         .khmer-body {
-            font-family: 'Kantumruy Pro', sans-serif;
+            font-family: 'Hanuman', 'Battambang', 'Nokora', 'Kantumruy Pro', sans-serif;
         }
         
         .heart-particle {
@@ -175,6 +180,8 @@
             }
         }
     </style>
+    <!-- Example usage of Freehand font without italic -->
+    <!-- <h2 class="khmer-freehand">សូមស្វាគមន៍</h2> -->
 </head>
 
 <body class="min-h-screen flex flex-col items-center py-10 px-4 space-y-16 pb-32 khmer-body">
@@ -192,7 +199,7 @@
         <div class="flex justify-center pt-6">
             <div class="profile-photo-card relative flex flex-col items-center p-4 bg-white/80 rounded-3xl shadow-2xl border-4 border-pink-200 max-w-xs" onclick="popHearts(event)">
                 <img src="Photo2/photo_23_2026-02-11_13-18-57.jpg" alt="Couple" class="profile-photo-large" style="max-width: 320px; width: 100%; height: auto; object-fit: contain; border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(255,77,109,0.15); border: 3px solid #ffb6d5; background: #fff;">
-                <p class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-500 text-white px-4 py-1 rounded-full text-xs animate-bounce shadow">ចុចលើរូប ❤️</p>
+                <p class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-pink-500 text-white px-4 py-1 rounded-full text-xs animate-bounce shadow">ស្អាតអត់Kapitpit ❤️</p>
             </div>
         </div>
     </header>
@@ -224,7 +231,7 @@
     <section class="reveal z-10 w-full max-w-lg text-center">
         <div class="glass-card p-8 rounded-3xl space-y-4">
             <p id="quote-text" class="khmer-art text-2xl text-pink-600 italic">អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ</p>
-            <button onclick="newQuote()" class="text-pink-400 text-sm underline hover:text-pink-600 transition">អូនចុចម្តងទៀតមើល ✨</button>
+            <button onclick="newQuote()" class="khmer-freehand bg-pink-100 text-pink-600 px-5 py-2 rounded-full shadow hover:bg-pink-200 transition font-bold text-base" style="max-width:100%; overflow-wrap:break-word; white-space:normal; border:none; text-decoration:none; display:inline-block;">អូនចុចម្តងទៀតមើល ដើម្បីទទួលបានក្តីស្រលាញ់ថ្មី ✨</button>
         </div>
     </section>
 
@@ -441,11 +448,11 @@
 
         // Quote Generator
         const quotes = [
-            "\"អូនគឺជាពិភពលោកទាំងមូលរបស់បង\"",
-            "\"រាល់វិនាទីដែលនៅក្បែរអូន គឺជាសុភមង្គល\"",
-            "\"បងនឹងនៅក្បែរអូន ទោះក្នុងកាលៈទេសៈណាក៏ដោយ\"",
-            "\"អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ\"",
-            "\"អូនគឺជាពន្លឺនៃជីវិតរបស់បង\""
+            "អូនគឺជាពិភពលោកទាំងមូលរបស់បង",
+            "រាល់វិនាទីដែលនៅក្បែរអូន គឺជាសុភមង្គល",
+            "បងនឹងនៅក្បែរអូន ទោះក្នុងកាលៈទេសៈណាក៏ដោយ",
+            "អរគុណដែលអូនផ្តល់ឱ្យបងនូវក្តីស្រលាញ់ដ៏កក់ក្តៅ",
+            "អូនគឺជាពន្លឺនៃជីវិតរបស់បង"
         ];
 
         function newQuote() {
@@ -478,24 +485,27 @@
             }
         }
 
-        // Moving No Button
+        // Moving and Shrinking No Button
         const noBtn = document.getElementById('noBtn');
-        const moveButton = () => {
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = (Math.random() * (window.innerWidth - 100)) + 'px';
-            noBtn.style.top = (Math.random() * (window.innerHeight - 50)) + 'px';
-            // Shrink the button each time it's moved
+        const shrinkButton = () => {
             let currentScale = parseFloat(noBtn.getAttribute('data-scale')) || 1;
             let newScale = currentScale * 0.85;
             if (newScale < 0.3) newScale = 0.3; // Minimum size
             noBtn.style.transform = `scale(${newScale})`;
             noBtn.setAttribute('data-scale', newScale);
         };
+        const moveButton = () => {
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = (Math.random() * (window.innerWidth - 100)) + 'px';
+            noBtn.style.top = (Math.random() * (window.innerHeight - 50)) + 'px';
+            shrinkButton();
+        };
         noBtn.addEventListener('mouseover', moveButton);
         noBtn.addEventListener('touchstart', (e) => {
             e.preventDefault();
             moveButton();
         });
+        noBtn.addEventListener('click', shrinkButton);
 
         // Reveal on scroll
         function reveal() {
@@ -557,7 +567,7 @@
         <div class="rounded-3xl px-8 py-6 shadow-xl bg-white/70 border border-pink-200 max-w-2xl mx-auto">
             <p class="khmer-art text-2xl md:text-3xl text-pink-600 leading-relaxed">
                 នេះគ្រាន់តែជារូបភាពមួយផ្នែករបស់យើងទេ<br> ណាអូនយើងនៅមានច្រើនទៀតហដឹងអត់​
-                <span class="font-bold cursive text-rose-500 text-3xl ml-2">Kapipit</span>
+                <span class="font-bold cursive text-rose-500 text-3xl ml-2">Ka pit pit</span>
             </p>
         </div>
         <div class="mt-4 flex gap-3">
