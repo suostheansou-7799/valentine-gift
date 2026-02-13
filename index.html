@@ -292,7 +292,7 @@
         </div>
     </div>
 
-    <audio id="loveSong" loop>
+    <audio id="loveSong" loop autoplay muted>
         <source src="ifoundyou.mp3" type="audio/mpeg">
     </audio>
 
@@ -532,7 +532,13 @@
         // Try to auto-play music on page load
         window.addEventListener('DOMContentLoaded', () => {
             audio.volume = 0.5;
-            audio.play().catch(() => {
+            // Unmute after play to allow auto-play on most browsers
+            audio.muted = true;
+            audio.play().then(() => {
+                setTimeout(() => {
+                    audio.muted = false;
+                }, 500);
+            }).catch(() => {
                 // If auto-play fails, show start button
                 document.getElementById('musicStartContainer').style.display = 'block';
             });
